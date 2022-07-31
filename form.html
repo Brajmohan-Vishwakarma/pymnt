@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding:14px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+<style>
+padding: 640px 320px
+</style>
+
+<h3>payment Form</h3>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<div>
+  <form action="POST" name="google-sheet"> 
+    <label for="Date_Paid">Date_Paid</label>
+    <input type="text" id="Date_Paid" name="Date_Paid" placeholder="Date_Paid">
+
+    <label for="Paid">Paid</label>
+    <input type="text" id="Paid" name="Paid" placeholder="Paid">
+
+    <label for="Reason_Paid">Reason_Paid</label>
+    <input type="text" id="Reason_Paid" name="Reason_Paid" placeholder="Reason_Paid">
+    
+    <label for="Date_Recevied">Date_Recevied</label>
+    <input type="text" id="Date_Recevied" name="Date_Recevied" placeholder="Date_Recevied">
+
+    <label for="Recevied">Recevied</label>
+    <input type="text" id="Recevied" name="Recevied" placeholder="Recevied">
+
+   <label for="Reason_Recevied">Reason_Recevied</label>
+    <input type="text" id="Reason_Recevied" name="Reason_Recevied" placeholder="Reason_Recevied">
+    
+     <input type="submit" value="Submit"> name="submit">
+  </form>
+</div>
+
+
+          <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxjYicVs4IgRuSgYYZPtNbQXvAMCfDc6u4GizXkfVwQQIaW9RyUUR3iDamjhlDvUWEtig/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Your Payment Report is Captured Succesfuly!!!!!"))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+
+</body>
+</html>
+
